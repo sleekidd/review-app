@@ -1,0 +1,102 @@
+.new-header {
+    background-color: #F8F9FA;
+    width: 100% !important;
+}
+
+.navbar-light .navbar-nav .nav-link:nth-child(2) {
+    background: red;
+}
+
+.jumbotron-bg {
+    background-image: url("{% static 'img/aquaman.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+}
+
+.jumbotron-bg .lead {
+    color: #FFF;
+}
+
+.jumbotron-bg .display-4 {
+    color: #FFF;
+    padding: 60px 0 0;
+}
+
+.movie-element {
+    border: 1px solid rgb(222, 222, 222);
+    border-radius: 5px;
+    padding-bottom: 10px;
+    /* margin: 0 5px; */
+}
+
+.image-element img {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px 5px 0 0;
+}
+
+.text-element h3 {
+    color: blue;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 16px;
+    width: 80%;
+}
+
+.text-element h4 {
+    color: rgb(51, 51, 51);
+    font-size: 15px;
+    height: 50px;
+    line-height: 1.4;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.text-element h5 {
+    color: rgb(51, 51, 51);
+    font-size: 11px;
+    /* height: 50px; */
+    line-height: 1.4;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.text-element h6 {
+    color: rgb(241, 92, 0);
+    font-size: 15px;
+    line-height: 1.4;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    height: 21px;
+    display: inline-block;
+}
+
+.text-element i {
+    color: rgb(241, 92, 0);
+    font-size: 15px;
+    line-height: 1.4;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    float: left;
+}
+
+.text-center img {
+    margin-top: 50px;
+}
+
+.text-center h2 {
+    margin-bottom: 30px;
+}
+
+
+/* ######################## */
+
+
