@@ -1,11 +1,12 @@
 {% extends 'movieapp/base.html' %}
+{% load static %}
 
 {% block content %}
 <section>
     <div class="jumbotron jumbotron-fluid jumbotron-bg">
         <div class="container">
             <div class="text-center">
-                <img src="static/img/notyetrated-default.png" alt="">
+                <img src="{% static "movieapp/img/notyetrated-default.png" %}" alt="">
             </div>
             <p class="lead text-center">Your source for reviews and ratings to help maximize your entertainment
                 experience. Whether it is a movie, TV series/show, music videos or stage play, our reviews will help
@@ -48,10 +49,10 @@
             <div class="col-6 col-md-4">
                 <div class="movie-element">
                     <div class="image-element">
-                        <a href="#"><img src="{{ movie.image.url }}" alt=""></a>
+                        <a href="{% url 'movie-detail' movie.id %}"><img src="{{ movie.image.url }}" alt=""></a>
                     </div>
                     <div class="text-element">
-                        <h3><a href="#">{{ movie.title }}</a></h3>
+                        <h3><a href="{% url 'movie-detail' movie.id %}">{{ movie.title }}</a></h3>
                     </div>
                     <div class="text-element">
                         <h4>{% for cast in movie.cast.all %}
