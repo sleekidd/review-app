@@ -48,11 +48,10 @@
             <div class="col-6 col-md-4">
                 <div class="movie-element">
                     <div class="image-element">
-                        <a href="{% url 'movie_detail' pk=movie.pk %}"><img src="{{ movie.featured_image.url }}"
-                                alt=""></a>
+                        <a href="#"><img src="{{ movie.image.url }}" alt=""></a>
                     </div>
                     <div class="text-element">
-                        <h3><a href="{% url 'movie_detail' pk=movie.pk %}">{{ movie.title }}</a></h3>
+                        <h3><a href="#">{{ movie.title }}</a></h3>
                     </div>
                     <div class="text-element">
                         <h4>{% for cast in movie.cast.all %}
@@ -72,69 +71,7 @@
             {% endfor %}
         </div>
 
-        <!-- <div class="row">
-            <div class="col-6 col-md-4">
-                <div class="movie-element">
-                    <div class="image-element">
-                        <img src="img/aquaman.jpg" alt="">
-                    </div>
-                    <div class="text-element">
-                        <h3>Aquaman</h3>
-                    </div>
-                    <div class="text-element">
-                        <h4>James Momoa, Amber Heard, Patrick Wilson, Nicole Kidman</h4>
-                    </div>
-                    <div class="text-element">
-                        <h5>FANTASY, SCIENCE FICTION</h5>
-                    </div>
-                    <div class="text-element">
-                        <i class="fa fa-calendar"></i>
-                        <h6>December 21, 2018</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="movie-element">
-                    <div class="image-element">
-                        <img src="img/God-Calling-Zainab-Balogun.jpeg" alt="">
-                    </div>
-                    <div class="text-element">
-                        <h3>God Calling</h3>
-                    </div>
-                    <div class="text-element">
-                        <h4>Eku Edewor, Karibi Fubara, Nkem Owoh, Onyeka Onwenu, Richard Mofe Damijo...</h4>
-                    </div>
-                    <div class="text-element">
-                        <h5>DRAMA, COMEDY</h5>
-                    </div>
-                    <div class="text-element">
-                        <i class="fa fa-calendar"></i>
-                        <h6>December 21, 2018</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="movie-element">
-                    <div class="image-element">
-                        <img src="img/KOB.jpg" alt="">
-                    </div>
-                    <div class="text-element">
-                        <h3>King of Boys</h3>
-                    </div>
-                    <div class="text-element">
-                        <h4>Sola Sobowale, Adesua Etomi-Wellington, Reminisce, Toni Tones</h4>
-                    </div>
-                    <div class="text-element">
-                        <h5>DRAMA, POLITICAL THRILLER</h5>
-                    </div>
-                    <div class="text-element">
-                        <i class="fa fa-calendar"></i>
-                        <h6>October 20, 2018</h6>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </div>
+    </div>>
 
 </section>
 {% endblock content %}

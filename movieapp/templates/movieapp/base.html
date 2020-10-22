@@ -1,4 +1,5 @@
 {% load static %}
+{% load random_image %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +15,12 @@
     {% else %}
     <title>Review and Rating Movie App</title>
     {% endif %}
+
+    <style>
+        .jumbotron-bg {
+            background-image: url("media/{% random_image "movie_pics/" %}");
+        }
+    </style>
 
 </head>
 
@@ -82,9 +89,6 @@
     </header>
 
     <main>
-        {% block content %}
-
-        {% endblock %}
         <div class="container">
             {% if messages %}
             {% for message in messages %}
@@ -94,6 +98,9 @@
             {% endfor %}
             {% endif %}
         </div>
+        {% block content %}
+
+        {% endblock %}
     </main>
 
     <script src="js/script.js"></script>

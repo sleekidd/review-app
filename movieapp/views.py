@@ -5,7 +5,10 @@ from .models import Movie
 
 
 def home(request):
-    return render(request, 'movieapp/index.html')
+    context = {
+        'movies': Movie.objects.all()
+    }
+    return render(request, 'movieapp/index.html', context)
 
 
 def about(request):
