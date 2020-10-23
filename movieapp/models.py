@@ -40,3 +40,26 @@ class Movie(models.Model):
 
     def get_absolute_url(self):
         return reverse('movie-detail', kwargs={'pk': self.pk})
+
+    @property
+    def number_of_comments(self):
+        return Review.objects.filter(movie=self).count()
+
+
+class Review(models.Model):
+    movie = models.ForeignKey(
+        Movie, on_delete=models.CASCADE, related_name='review')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_date']
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return 'Review {} by {}'.format(self.content, self.author)

@@ -1,5 +1,6 @@
 {% extends 'movieapp/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -14,13 +15,14 @@
                     <div class="text-element">
                         <h3>{{ object.title }}</h3>
                     </div>
-                    {% if object.author == user %}
+                    {% if user.is_superuser %}
                     <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'movie-update' object.id %}">Update</a>
                     <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'movie-delete' object.id %}">Delete</a>
                     {% endif %}
                     <div class="text-element">
                         <h4>{% for cast in object.cast.all %}
-                            {{ cast.name }}{% if not forloop.last %}, {% endif %}
+                            {{ cast.name }}{% if not forloop.last %},
+                            {% endif %}
                             {% endfor %}</h4>
                     </div>
                     <div class="text-element">
@@ -35,7 +37,48 @@
             </div>
         </div>
 
-    </div>>
+        <h2>Leave your comment!</h2>
+        <div id="comments_section">
+
+            {% if user.is_authenticated %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ comment_form }}
+                    <button class="btn btn-info" type="submit">Add comment <i class="fas fa-comments"></i></button>
+                </div>
+            </form>
+            {% else %}
+            <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to add a
+                comment!</a><br>
+            {% endif %}
+
+            {% if comments %}
+            <strong class="text-secondary">{{ object.number_of_comments }}
+                Comment{{ object.number_of_comments|pluralize }}</strong>
+            <hr>
+            <ul>
+                {% for comment in comments %}
+                <li>
+                    <div>
+                        <span>
+                            <strong class="text-info">{{ comment.author }} </strong>
+                            <small class="text-muted">{{ comment.created_date }}</small>
+                        </span>
+                        <p>
+                            {{ comment.content|safe }}
+                        </p>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <strong class="text-secondary">No comments yet...</strong>
+            {% endif %}
+
+        </div>
+
+    </div>
 
 </section>
 {% endblock content %}

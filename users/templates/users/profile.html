@@ -9,6 +9,8 @@
                 <div class="media-body">
                     <h2 class="account-heading">{{ user.username }}</h2>
                     <p class="text-secondary">{{ user.email }}</p>
+                    <p class="text-secondary">{{ user.last_login }}</p>
+                    <p class="text-secondary">{{ user.date_joined }}</p>
                 </div>
             </div>
             <form method="POST" enctype="multipart/form-data">

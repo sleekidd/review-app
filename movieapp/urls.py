@@ -4,13 +4,13 @@ from .views import (
     MovieDetailView,
     MovieCreateView,
     MovieUpdateView,
-    MovieDeleteView
+    MovieDeleteView,
 )
 from . import views
 
 urlpatterns = [
-    # path('', views.home, name='movie-home'),
-    path('', MovieListView.as_view(), name='movie-home'),
+    path('', views.home, name='movie-home'),
+    path('movies/', MovieListView.as_view(), name='movie-all'),
     path('movie/<int:pk>/', MovieDetailView.as_view(), name='movie-detail'),
     path('movie/new/', MovieCreateView.as_view(), name='movie-create'),
     path('movie/<int:pk>/update/', MovieUpdateView.as_view(), name='movie-update'),
