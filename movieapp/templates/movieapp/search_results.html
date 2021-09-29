@@ -8,7 +8,7 @@
                 <div class="row mb-4">
                     <div class="col-12 d-flex justify-content-between">
                         <div>
-                            <span class="text-muted text-small">All movies </span>
+                            <span class="text-muted text-small">Results</span>
                         </div>
                         <form class="d-flex align-items-center">
                             <span class="mr-2 text-muted text-small text-nowrap">Sort by:</span>
@@ -23,10 +23,10 @@
                     <!--end of col-->
                 </div>
 
-        
+    {% if object_list %} 
       <ul class="row feature-list feature-list-sm">
 
-        {% for movie in movies %}
+        {% for movie in object_list %}
         <li class="col-12 col-md-6 col-lg-4">
           <div class="card">
             <a href="{% url 'movie-detail' movie.slug %}">
@@ -41,9 +41,9 @@
                     {% endif %}
                     {% endfor %}
                 </p>
-                <!-- <h4 class="card-title">{{ ratings.avg_score|floatformat:0 }}</h4> -->
+                <h4 class="card-title">{{ rating.avg_score|floatformat:0 }}</h4>
               </a>
-              
+                
               <div class="mt-2">
                 <i class="fa fa-star {% if movie.avg_score > 0 %} checked {% endif %}"></i>
                 <i class="fa fa-star {% if movie.avg_score > 1 %} checked {% endif %}"></i>
@@ -61,7 +61,6 @@
                   {% endif %}
                 </span>
               </div>
-              
             </div>
             <div class="card-footer card-footer-borderless d-flex justify-content-between">
               <div class="text-small text-element">
@@ -93,34 +92,11 @@
         {% endfor %}
 
       </ul>
-      <!--end of row-->
-
-      {% if movies.has_other_pages %}
-  <ul class="pagination">
-    {% if movies.has_previous %}
-      <li><a href="?page=1">First</a></li>
-      <li><a href="?page={{ movies.previous_page_number }}">&laquo;</a></li>
-    
-      <!-- <li class="disabled"><span>First</span></li>
-      <li class="disabled"><span>&laquo;</span></li> -->
-    {% endif %}
-    {% for i in movies.paginator.page_range %}
-      {% if movies.number == i %}
-        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
       {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      <h1>No results</h1>
       {% endif %}
-    {% endfor %}
-    {% if movies.has_next %}
-      <li><a href="?page={{ movies.next_page_number }}">&raquo;</a></li>
-      <li><a href="?page={{ movies.paginator.num_pages }}">Last</a></li>
-    
-      <!-- <li class="disabled"><span>&raquo;</span></li> -->
-    {% endif %}
-  </ul>
-{% endif %}
-
-      <!-- {% if is_paginated %}
+      <!--end of row-->
+      {% if is_paginated %}
       <ul class="pagination">
 
         {% if page_obj.has_previous %}
@@ -142,7 +118,7 @@
         {% endif %}
 
       </ul>
-      {% endif %} -->
+      {% endif %}
 
     </div>
 
