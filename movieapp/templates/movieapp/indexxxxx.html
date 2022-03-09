@@ -1,0 +1,461 @@
+{% extends 'movieapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="bg-dark text-white space-xlg jarallax jumbotron-bg" data-jarallax data-speed="0.2">
+  <div class="container">
+    <div class="row text-center justify-content-center section-intro">
+      <div class="col-12 col-md-10 col-lg-8">
+        <h1 class="display-3 jumb">Rate and Review.</h1>
+        <span class="lead">Your source for unbiased reviews and ratings to help maximize your everyday experience.
+        </span>
+      </div>
+      <!--end of col-->
+    </div>
+    <!--end of row-->
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <form class="card card-sm" action="{% url 'search_results' %}" method="get">
+          <div class="card-body row no-gutters align-items-center">
+            <div class="col-auto">
+              <i class="icon-magnifying-glass h4 text-body"></i>
+            </div>
+            <!--end of col-->
+            <div class="col">
+              <input name="q" class="form-control form-control-lg form-control-borderless" type="search"
+                placeholder="Search movie or keywords" />
+            </div>
+            <!--end of col-->
+            <div class="col-auto">
+              <button class="btn btn-lg btn-success" type="submit">Search</button>
+            </div>
+            <!--end of col-->
+          </div>
+        </form>
+      </div>
+      <!--end of col-->
+    </div>
+    <!--end of row-->
+  </div>
+  <!--end of container-->
+</section>
+<!--end of section-->
+
+<!-- <section>
+    <div class="jumbotron jumbotron-fluid jumbotron-bg">
+        <div class="container">
+            <div class="text-center">
+                <img src="{% static "movieapp/img/notyetrated-default.png" %}" alt="">
+            </div>
+            <p class="lead text-center">Your source for reviews and ratings to help maximize your entertainment
+                experience. Whether it is a movie, TV series/show, music videos or stage play, our reviews will help
+                you find the perfect option.
+            </p>
+            <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Search reviews of</span>
+                </div>
+                <input type="text" aria-label="lost item" class="form-control"
+                    placeholder="Aquaman, God calling, Kings of Boys etc">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">in</span>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>Category...</option>
+                    <option value="1">Comedy</option>
+                    <option value="2">Romance</option>
+                    <option value="3">Drama</option>
+                    <option value="1">Adventure</option>
+                    <option value="2">Crime</option>
+                    <option value="3">Thriller</option>
+                </select>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" id="button-addon2">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<section>
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-auto">
+        <h3 class="h4">Browse articles by category</h3>
+      </div>
+      <!--end of col-->
+    </div>
+    <!--end of row-->
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10">
+        <ul class="feature-list feature-list-sm row">
+
+          {% for movie in movies %}
+          <li class="col-6 col-md-4">
+            <a class="card text-center" href="#">
+              <div class="card-body">
+                <img class="card-img-top" src="{{ movie.image.url }}" alt="Card image cap"
+                  style="width: 100%; height: 200px; object-fit: cover;">
+                <i class="icon-area-graph text-red display-4"></i>
+                <h6 class="title-decorative">Analytics</h6>
+              </div>
+            </a>
+          </li>
+          {% endfor %}
+
+          <li class="col-6 col-md-4">
+            <a class="card text-center" href="#">
+              <div class="card-body">
+                <i class="icon-power-plug text-orange display-4"></i>
+                <h6 class="title-decorative">API Integration</h6>
+              </div>
+            </a>
+          </li>
+
+          <li class="col-6 col-md-4">
+            <a class="card text-center" href="#">
+              <div class="card-body">
+                <i class="icon-credit-card text-yellow display-4"></i>
+                <h6 class="title-decorative">Billing</h6>
+              </div>
+            </a>
+          </li>
+
+          <li class="col-6 col-md-4">
+            <a class="card text-center" href="#">
+              <div class="card-body">
+                <i class="icon-code text-green display-4"></i>
+                <h6 class="title-decorative">Development</h6>
+              </div>
+            </a>
+          </li>
+
+          <li class="col-6 col-md-4">
+            <a class="card text-center" href="#">
+              <div class="card-body">
+                <i class="icon-shield text-teal display-4"></i>
+                <h6 class="title-decorative">Security</h6>
+              </div>
+            </a>
+          </li>
+
+          <li class="col-6 col-md-4">
+            <a class="card text-center" href="#">
+              <div class="card-body">
+                <i class="icon-folder text-blue display-4"></i>
+                <h6 class="title-decorative">Storage</h6>
+              </div>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+      <!--end of col-->
+    </div>
+    <!--end of row-->
+  </div>
+  <!--end of container-->
+</section>
+<!--end of section-->
+
+<section>
+  <div class="container-fluid">
+    <h2 class="mt-5">Movies</h2>
+    <p class="subtitle">Experiences that you can’t find anywhere else</p>
+    <div class="row">
+      <div class="scrollcards row flex-row flex-nowrap mt-4 pb-4 pt-2">
+        {% for movie in movies %}
+
+        <div class="card-item">
+          <div class="card-sub">
+            <a href="{% url 'movie-detail' movie.slug %}">
+              <img class="card-img-top" src="{{ movie.image.url }}" alt="Card image cap"
+                style="width: 100%; height: 220px; object-fit: cover;">
+            </a>
+          </div>
+          <a href="{% url 'movie-detail' movie.slug %}">
+            <h4 class="card-title">{{ movie.title|truncatewords:6 }}</h4>
+            <p class="card-text text-body">
+              {% for cast in movie.cast.all %}
+              {{ cast.name|truncatewords:12 }}{% if not forloop.last %},
+              {% endif %}
+              {% endfor %}
+            </p>
+            <!-- <h4 class="card-title">{{ movie.avg_score|floatformat:0 }}</h4> -->
+          </a>
+          <div class="mt-2">
+            <i class="fa fa-star {% if movie.avg_score > 0 %} checked {% endif %}"></i>
+            <i class="fa fa-star {% if movie.avg_score > 1 %} checked {% endif %}"></i>
+            <i class="fa fa-star {% if movie.avg_score > 2 %} checked {% endif %}"></i>
+            <i class="fa fa-star {% if movie.avg_score > 3 %} checked {% endif %}"></i>
+            <i class="fa fa-star {% if movie.avg_score > 4 %} checked {% endif %}"></i>
+            <span>
+              {% if movie.avg_score > 1 %}
+              {{ movie.review_count }}
+              {% if movie.review_count > 1 %} Reviews {% else %}
+              Review
+              {% endif %}
+              {% else %}
+              No reviews
+              {% endif %}
+            </span>
+          </div>
+        </div>
+
+        {% endfor %}
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="flush-with-above">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-auto">
+        <h3 class="h4">Popular articles by category</h3>
+      </div>
+      <!--end of col-->
+    </div>
+    <!--end of row-->
+    <ul class="row feature-list feature-list-sm">
+
+      {% for movie in movies %}
+      <li class="col-12 col-md-6 col-lg-4">
+        <div class="card">
+          <a href="{% url 'movie-detail' movie.slug %}">
+            <img class="card-img-top" src="{{ movie.image.url }}" alt="Card image cap"
+              style="width: 100%; height: 200px; object-fit: cover;">
+          </a>
+          <div class="card-body">
+            <a href="{% url 'movie-detail' movie.slug %}">
+              <h4 class="card-title">{{ movie.title|truncatewords:6 }}</h4>
+              <p class="card-text text-body">
+                {% for cast in movie.cast.all %}
+                {{ cast.name|truncatewords:12 }}{% if not forloop.last %},
+                {% endif %}
+                {% endfor %}
+              </p>
+              <!-- <h4 class="card-title">{{ movie.avg_score|floatformat:0 }}</h4> -->
+            </a>
+            <div class="mt-2">
+              <i class="fa fa-star {% if movie.avg_score > 0 %} checked {% endif %}"></i>
+              <i class="fa fa-star {% if movie.avg_score > 1 %} checked {% endif %}"></i>
+              <i class="fa fa-star {% if movie.avg_score > 2 %} checked {% endif %}"></i>
+              <i class="fa fa-star {% if movie.avg_score > 3 %} checked {% endif %}"></i>
+              <i class="fa fa-star {% if movie.avg_score > 4 %} checked {% endif %}"></i>
+              <span>
+                {% if movie.avg_score > 1 %}
+                {{ movie.review_count }}
+                {% if movie.review_count > 1 %} Reviews {% else %}
+                Review
+                {% endif %}
+                {% else %}
+                No reviews
+                {% endif %}
+              </span>
+            </div>
+          </div>
+          <div class="card-footer card-footer-borderless d-flex justify-content-between">
+            <div class="text-small text-element">
+              <h5>{% for category in movie.category.all %} {{ category.name }} {% if not forloop.last %}| {% endif %}
+                {% endfor %}</h5>
+              <i class="fa fa-calendar"></i>
+              <h6>{{ movie.release_date|date:'F d, Y' }}</h6>
+              <!-- <ul class="list-inline">
+                <li class="list-inline-item">
+                    <h5>{% for category in movie.category.all %} {{ category.name }} {% if not forloop.last %}| {% endif %} {% endfor %}</h5>
+                  </li>
+                <li class="list-inline-item"><i class="fa fa-calendar"></i><h6>{{ movie.release_date|date:'F d, Y' }}</h6></li>
+              </ul> -->
+            </div>
+            <!-- <div class="dropup">
+              <button class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow" type="button" id="SidekickButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="icon-dots-three-horizontal"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="SidekickButton">
+                <a class="dropdown-item" href="#">Save</a>
+                <a class="dropdown-item" href="#">Share</a>
+                <a class="dropdown-item" href="#">Comment</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Report</a>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </li>
+      <!--end of col-->
+      {% endfor %}
+
+    </ul>
+    <!--end of row-->
+    <div class="row justify-content-center text-center section-outro">
+      <div class="col-lg-4 col-md-5">
+        <h6>Didn't find what you were after?</h6>
+        <p>As we’re always improving the knowledgebase, your feedback is much appreciated</p>
+        <a href="#">Contact support &rsaquo;</a>
+      </div>
+      <!--end of col-->
+    </div>
+    <!--end of row-->
+  </div>
+  <!--end of container-->
+</section>
+<!--end of section-->
+
+<section>
+  <div class="container">
+    <div class="row justify-content-between mb-5">
+      <div class="col-auto">
+        <h3>Featured Movies</h3>
+      </div>
+      <!--end of col-->
+      <div class="col-auto">
+        <a href="{% url 'movie-all' %}" class="btn btn-outline-primary">View all</a>
+      </div>
+      <!--end of col-->
+    </div>
+    <!--end of row-->
+
+    <div class="row justify-content-center">
+      <ul class="row feature-list feature-list-sm">
+
+        {% for movie in movies %}
+        <li class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+            <a href="{% url 'movie-detail' movie.slug %}">
+              <img class="card-img-top" src="{{ movie.image.url }}" alt="Card image cap"
+                style="width: 100%; height: 200px; object-fit: cover;">
+            </a>
+            <div class="card-body">
+              <a href="{% url 'movie-detail' movie.slug %}">
+                <h4 class="card-title">{{ movie.title|truncatewords:6 }}</h4>
+                <p class="card-text text-body">
+                  {% for cast in movie.cast.all %}
+                  {{ cast.name|truncatewords:12 }}{% if not forloop.last %},
+                  {% endif %}
+                  {% endfor %}
+                </p>
+                <!-- <h4 class="card-title">{{ movie.avg_score|floatformat:0 }}</h4> -->
+              </a>
+              <div class="mt-2">
+                <i class="fa fa-star {% if movie.avg_score > 0 %} checked {% endif %}"></i>
+                <i class="fa fa-star {% if movie.avg_score > 1 %} checked {% endif %}"></i>
+                <i class="fa fa-star {% if movie.avg_score > 2 %} checked {% endif %}"></i>
+                <i class="fa fa-star {% if movie.avg_score > 3 %} checked {% endif %}"></i>
+                <i class="fa fa-star {% if movie.avg_score > 4 %} checked {% endif %}"></i>
+                <span>
+                  {% if movie.avg_score > 1 %}
+                  {{ movie.review_count }}
+                  {% if movie.review_count > 1 %} Reviews {% else %}
+                  Review
+                  {% endif %}
+                  {% else %}
+                  No reviews
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+            <div class="card-footer card-footer-borderless d-flex justify-content-between">
+              <div class="text-small text-element">
+                <h5>{% for category in movie.category.all %} {{ category.name }} {% if not forloop.last %}| {% endif %}
+                  {% endfor %}</h5>
+                <i class="fa fa-calendar"></i>
+                <h6>{{ movie.release_date|date:'F d, Y' }}</h6>
+                <!-- <ul class="list-inline">
+                  <li class="list-inline-item">
+                      <h5>{% for category in movie.category.all %} {{ category.name }} {% if not forloop.last %}| {% endif %} {% endfor %}</h5>
+                    </li>
+                  <li class="list-inline-item"><i class="fa fa-calendar"></i><h6>{{ movie.release_date|date:'F d, Y' }}</h6></li>
+                </ul> -->
+              </div>
+              <!-- <div class="dropup">
+                <button class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow" type="button" id="SidekickButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="icon-dots-three-horizontal"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="SidekickButton">
+                  <a class="dropdown-item" href="#">Save</a>
+                  <a class="dropdown-item" href="#">Share</a>
+                  <a class="dropdown-item" href="#">Comment</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Report</a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </li>
+        <!--end of col-->
+        {% endfor %}
+
+      </ul>
+    </div>
+    <!--end of row-->
+  </div>
+  <!--end of container-->
+</section>
+<!--end of section-->
+
+<!-- <section>
+    <div class="container">
+        <div class="text-center">
+            <h2>Find the best reviews in town</h2>
+        </div>
+
+        <div class="row">
+            {% for movie in movies %}
+            <div class="col-6 col-md-4">
+                <div class="movie-element">
+                    <div class="image-element">
+                        <a href="{% url 'movie-detail' movie.slug %}"><img src="{{ movie.image.url }}" alt=""></a>
+                    </div>
+                    <div class="text-element">
+                        <h3><a href="{% url 'movie-detail' movie.slug %}">{{ movie.title|truncatewords:6 }}</a></h3>
+                    </div>
+                    <div class="text-element">
+                        <h4>{% for cast in movie.cast.all %}
+                            {{ cast.name|truncatewords:12 }}{% if not forloop.last %},
+                            {% endif %}
+                            {% endfor %}</h4>
+                    </div>
+                    <div class="text-element">
+                        <h5>{% for category in movie.category.all %} {{ category.name }} {% if not forloop.last %}|
+                            {% endif %} {% endfor %}</h5>
+                    </div>
+                    <div class="text-element">
+                        <i class="fa fa-calendar"></i>
+                        <h6>{{ movie.release_date|date:'F d, Y' }}</h6>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if is_paginated %}
+
+        {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+
+        {% endif %}
+
+    </div>
+
+</section> -->
+{% endblock content %}

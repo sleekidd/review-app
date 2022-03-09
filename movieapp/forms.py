@@ -7,14 +7,14 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class ReviewForm(forms.ModelForm):
     review = forms.Textarea()
-    rating = forms.IntegerField(min_value=1, max_value=5)
+    # rating = forms.IntegerField(min_value=1, max_value=5)
 
     class Meta:
         model = Review
-        fields = ['review', 'rating']
+        fields = ['review']
         widgets = {
           'review': forms.Textarea(attrs={'rows':5}),
-          'rating': forms.RadioSelect()
+          # 'rating': forms.RadioSelect()
         }
 
 
