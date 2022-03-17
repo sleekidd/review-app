@@ -1,0 +1,150 @@
+{% extends 'movieapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section>
+    <div class="container">
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-between">
+                        <div>
+                            <span class="text-muted text-small">All movies </span>
+                        </div>
+                        <form class="d-flex align-items-center">
+                            <span class="mr-2 text-muted text-small text-nowrap">Sort by:</span>
+                            <select class="custom-select" disabled>
+                                <option value="alpha">Alphabetical</option>
+                                <option value="old-new" selected>Newest</option>
+                                <option value="new-old">Popular</option>
+                                <option value="recent">Recently Updated</option>
+                            </select>
+                        </form>
+                    </div>
+                    <!--end of col-->
+                </div>
+
+        
+      <ul class="row feature-list feature-list-sm">
+
+        {% for movie in movies %}
+        <li class="col-12 col-md-6 col-lg-4">
+          <div class="card">
+            <a href="{% url 'movie-detail' movie.slug %}">
+              <img class="card-img-top" src="{{ movie.image.url }}" alt="Card image cap" style="width: 100%; height: 200px; object-fit: cover;">
+            </a>
+            <div class="card-body">
+              <a href="{% url 'movie-detail' movie.slug %}">
+                <h4 class="card-title">{{ movie.title|truncatewords:6 }}</h4>
+                <p class="card-text text-body">
+                    {% for cast in movie.cast.all %}
+                    {{ cast.name|truncatewords:12 }}{% if not forloop.last %},
+                    {% endif %}
+                    {% endfor %}
+                </p>
+                <!-- <h4 class="card-title">{{ ratings.avg_score|floatformat:0 }}</h4> -->
+              </a>
+              
+              <div class="mt-2">
+                <i class="fa fa-star {% if movie.avg_score > 0 %} checked {% endif %}"></i>
+                <i class="fa fa-star {% if movie.avg_score > 1 %} checked {% endif %}"></i>
+                <i class="fa fa-star {% if movie.avg_score > 2 %} checked {% endif %}"></i>
+                <i class="fa fa-star {% if movie.avg_score > 3 %} checked {% endif %}"></i>
+                <i class="fa fa-star {% if movie.avg_score > 4 %} checked {% endif %}"></i>
+                <span>
+                  {% if movie.avg_score > 1 %}
+                    {{ movie.review_count }}
+                      {% if movie.review_count > 1 %} Reviews {% else %}
+                      Review
+                      {% endif %}
+                  {% else %}
+                    No reviews
+                  {% endif %}
+                </span>
+              </div>
+              
+            </div>
+            <div class="card-footer card-footer-borderless d-flex justify-content-between">
+              <div class="text-small text-element">
+                <h5>{% for category in movie.category.all %} {{ category.name }} {% if not forloop.last %}| {% endif %} {% endfor %}</h5>
+                <i class="fa fa-calendar"></i><h6>{{ movie.release_date|date:'F d, Y' }}</h6>
+                <!-- <ul class="list-inline">
+                  <li class="list-inline-item">
+                      <h5>{% for category in movie.category.all %} {{ category.name }} {% if not forloop.last %}| {% endif %} {% endfor %}</h5>
+                    </li>
+                  <li class="list-inline-item"><i class="fa fa-calendar"></i><h6>{{ movie.release_date|date:'F d, Y' }}</h6></li>
+                </ul> -->
+              </div>
+              <!-- <div class="dropup">
+                <button class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-no-arrow" type="button" id="SidekickButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="icon-dots-three-horizontal"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-sm" aria-labelledby="SidekickButton">
+                  <a class="dropdown-item" href="#">Save</a>
+                  <a class="dropdown-item" href="#">Share</a>
+                  <a class="dropdown-item" href="#">Comment</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Report</a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </li>
+        <!--end of col-->
+        {% endfor %}
+
+      </ul>
+      <!--end of row-->
+
+      {% if movies.has_other_pages %}
+  <ul class="pagination">
+    {% if movies.has_previous %}
+      <li><a href="?page=1">First</a></li>
+      <li><a href="?page={{ movies.previous_page_number }}">&laquo;</a></li>
+    
+      <!-- <li class="disabled"><span>First</span></li>
+      <li class="disabled"><span>&laquo;</span></li> -->
+    {% endif %}
+    {% for i in movies.paginator.page_range %}
+      {% if movies.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if movies.has_next %}
+      <li><a href="?page={{ movies.next_page_number }}">&raquo;</a></li>
+      <li><a href="?page={{ movies.paginator.num_pages }}">Last</a></li>
+    
+      <!-- <li class="disabled"><span>&raquo;</span></li> -->
+    {% endif %}
+  </ul>
+{% endif %}
+
+      <!-- {% if is_paginated %}
+      <ul class="pagination">
+
+        {% if page_obj.has_previous %}
+        <li><a href="?page=1">First</a></li>
+        <li><a href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <li><a class="page" href="?page={{ num }}">{{ num }}</a></li>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <li><a href="?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        <li><a href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+        {% endif %}
+
+      </ul>
+      {% endif %} -->
+
+    </div>
+
+</section>
+{% endblock content %}

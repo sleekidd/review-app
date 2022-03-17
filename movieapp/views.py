@@ -42,7 +42,7 @@ def movies(request):
 
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(movie_list, 3)
+    paginator = Paginator(movie_list, 6)
     try:
         movies = paginator.page(page)
     except PageNotAnInteger:
