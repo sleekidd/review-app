@@ -313,27 +313,23 @@
                     class="trip-destinations-collection-list-wrapper w-dyn-list">
                     <div role="list" class="events-collection-list w-dyn-items">
                         {% for movie in movies %}
-                        <div role="listitem" class="experience-carousel_item w-dyn-item">
-                            <div class="experience-card">
-                                <div class="experience-card_header-wrapper">
+                        <div role="listitem" class="trip-destinations-collection-item w-dyn-item">
+                            <div class="trip-destinations-content-wrapper">
+                                <div class="event-card__header-wrap">
                                     <div class="event-card__img-container"><img src="{{ movie.image.url }}"
-                                            loading="lazy" alt=""
-                                            sizes="(max-width: 479px) 100vw, (max-width: 767px) 63vw, (max-width: 1439px) 360px, (max-width: 1919px) 400px, 600px"
-                                            srcset="{{ movie.image.url }} 1100w" class="full-cover-img" /></div>
+                                            loading="lazy" alt="{{ movie.title|truncatewords:6 }}"
+                                            class="full-cover-img" /></div>
                                 </div>
-                                <div class="experience-card_content no-padding">
-                                    <div class="h4-wrapper">
-                                        <h4 class="headline-md">{{ movie.title|truncatewords:6 }}</h4>
-                                    </div>
-                                    <div class="label book">
+                                <div class="experience-card_content">
+                                    <h4>{{ movie.title|truncatewords:6 }}</h4>
+                                    <p>
                                         {% for cast in movie.cast.all %}
                                         {{ cast.name|truncatewords:12 }}{% if not forloop.last %},
                                         {% endif %}
                                         {% endfor %}
-                                    </div>
+                                    </p>
                                     <div class="tag-container">
                                         <div class="tag-wrapper">
-                                            <!-- <div class="tick-icon"></div> -->
                                             <div class="label-txt">
                                                 <i
                                                     class="fa fa-star {% if movie.avg_score > 0 %} checked {% endif %}"></i>
@@ -356,16 +352,7 @@
                                                     {% endif %}
                                                 </span>
                                             </div>
-                                            <!-- <div class="label-txt">3 days with skateboard legends</div> -->
                                         </div>
-                                        <!-- <div class="tag-wrapper">
-                                            <div class="tick-icon"></div>
-                                            <div class="label-txt">Huge headline bands</div>
-                                        </div> -->
-                                        <!-- <div class="tag-wrapper w-condition-invisible">
-                                            <div class="tick-icon"></div>
-                                            <div class="label-txt w-dyn-bind-empty"></div>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -392,7 +379,8 @@
                         <a href="/booking-guide" class="footer-link-txt">Booking Guide</a><a href="/what-is-pollen"
                             class="footer-link-txt">What is Pollen?</a><a href="https://support.pollen.co"
                             class="footer-link-txt">Support</a><a href="/partners" class="footer-link-txt">Partner With
-                            Us</a><a href="/team" class="footer-link-txt">Careers</a></div>
+                            Us</a><a href="/team" class="footer-link-txt">Careers</a>
+                    </div>
                     <div id="w-node-c4b3eaee-5154-06ee-8ad6-7cfa69a58025-69a5801b" class="footer-col2-links-wrapper"><a
                             href="/legal" class="footer-link-txt">Terms &amp; Conditions</a><a
                             href="https://pollen.co/covid" class="footer-link-txt">COVID-19 Updates</a><a
