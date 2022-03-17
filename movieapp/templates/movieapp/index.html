@@ -171,8 +171,15 @@
     <div data-collapse="tiny" data-animation="default" data-duration="400" data-doc-height="1" data-easing="ease-in"
         data-easing2="ease-out" role="banner" class="navbar w-nav">
         <div class="container nav">
-            <div class="pollen-logo-wrapper"><a href="https://www.pollen.co"
-                    class="pollen-header-logo w-inline-block"></a></div>
+            <a href="{% url 'movie-home' %}">
+                <img alt="Wingman" src="{% static "movieapp/img/reviewbeta-logo.png" %}" style="width: 148px;
+                height: 40px;
+                border-bottom-style: none;
+                background-repeat: no-repeat;" alt=""
+                />
+            </a>
+            <!-- <div class="pollen-logo-wrapper">
+            </div> -->
             <div class="nav_desktop-links-wrapper">
                 <div class="us-navigation-collection-list w-dyn-list">
                     <div role="list" class="us-navigation-collection-list w-dyn-items">
@@ -496,24 +503,20 @@
             <div class="carousel-scroll-container">
                 <div class="w-dyn-list">
                     <div role="list" class="carousel-items-wrapper w-dyn-items">
-                        {% for movie in movies %}
+                        {% for place in places %}
                         <div role="listitem" class="experience-carousel_item w-dyn-item">
                             <div class="experience-card">
                                 <div class="experience-card_header-wrapper">
-                                    <div class="event-card__img-container"><img src="{{ movie.image.url }}"
+                                    <div class="event-card__img-container"><img src="{{ place.image.url }}"
                                             loading="lazy" alt=""
                                             sizes="(max-width: 479px) 100vw, (max-width: 767px) 63vw, (max-width: 1439px) 360px, (max-width: 1919px) 400px, 600px"
-                                            srcset="{{ movie.image.url }} 1100w" class="full-cover-img" /></div>
+                                            srcset="{{ place.image.url }} 1100w" class="full-cover-img" /></div>
                                 </div>
                                 <div class="experience-card_content no-padding">
                                     <div class="h4-wrapper">
-                                        <h4 class="headline-md">{{ movie.title|truncatewords:6 }}</h4>
+                                        <h4 class="headline-md">{{ place.title|truncatewords:6 }}</h4>
                                     </div>
-                                    <div class="label book">
-                                        {% for cast in movie.cast.all %}
-                                        {{ cast.name|truncatewords:12 }}{% if not forloop.last %},
-                                        {% endif %}
-                                        {% endfor %}
+                                    <div class="label book">{{ place.content|truncatewords:10}}
                                     </div>
                                     <div class="tag-container">
                                         <div class="tag-wrapper">
@@ -571,8 +574,15 @@
         <div class="section-footer-us">
             <div class="container">
                 <div class="footer-wrapper">
-                    <div id="w-node-c4b3eaee-5154-06ee-8ad6-7cfa69a5801e-69a5801b" class="pollen-logo-wrapper footer"><a
-                            href="/" aria-current="page" class="pollen-header-logo w-inline-block w--current"></a></div>
+                    <a href="{% url 'movie-home' %}">
+                        <img alt="Wingman" src="{% static "movieapp/img/reviewbeta-logo.png" %}" style="width: 148px;
+                        height: 40px;
+                        border-bottom-style: none;
+                        background-repeat: no-repeat;" alt=""
+                        />
+                    </a>
+                    <!-- <div id="w-node-c4b3eaee-5154-06ee-8ad6-7cfa69a5801e-69a5801b" class="pollen-logo-wrapper footer"><a
+                            href="/" aria-current="page" class="pollen-header-logo w-inline-block w--current"></a></div> -->
                     <div id="w-node-c4b3eaee-5154-06ee-8ad6-7cfa69a58020-69a5801b" class="footer-column1-links-wrapper">
                         <a href="/booking-guide" class="footer-link-txt">Booking Guide</a><a href="/what-is-pollen"
                             class="footer-link-txt">What is Pollen?</a><a href="https://support.pollen.co"

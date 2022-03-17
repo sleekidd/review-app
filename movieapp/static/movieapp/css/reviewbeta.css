@@ -795,7 +795,7 @@
      width: 148px;
      height: 40px;
      border-bottom-style: none;
-     background-image: url("https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/60703decac14051b25462be2_pollen%20logo%20-%20white%20-%20April%208.svg");
+     background-image: url("{% static "movieapp/img/reviewbeta-logo.png" %}");
      background-size: contain;
      background-repeat: no-repeat;
    }
