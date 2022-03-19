@@ -312,16 +312,16 @@
                 <div style="-webkit-transform:translate3d(0, 100PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:0"
                     class="trip-destinations-collection-list-wrapper w-dyn-list">
                     <div role="list" class="events-collection-list w-dyn-items">
-                        {% for movie in movies %}
+                        {% for place in places %}
                         <div role="listitem" class="trip-destinations-collection-item w-dyn-item">
                             <div class="trip-destinations-content-wrapper">
                                 <div class="event-card__header-wrap">
-                                    <div class="event-card__img-container"><img src="{{ movie.image.url }}"
+                                    <div class="event-card__img-container"><img src="{{ place.image.url }}"
                                             loading="lazy" alt="{{ movie.title|truncatewords:6 }}"
                                             class="full-cover-img" /></div>
                                 </div>
                                 <div class="experience-card_content">
-                                    <h4>{{ movie.title|truncatewords:6 }}</h4>
+                                    <h4>{{ place.title|truncatewords:6 }}</h4>
                                     <p>
                                         {% for cast in movie.cast.all %}
                                         {{ cast.name|truncatewords:12 }}{% if not forloop.last %},
@@ -356,7 +356,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{% url 'movie-detail' movie.slug %}" class="event-url-link w-inline-block">
+                            <a href="{% url 'place-detail' place.slug %}" class="event-url-link w-inline-block">
                             </a>
                         </div>
                         {% endfor %}

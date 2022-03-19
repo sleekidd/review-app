@@ -19,6 +19,8 @@ from django.http import JsonResponse
 from django.db.models import Avg, Func, Count
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from places.models import Place
+
 # Create your views here.
 
 
@@ -30,7 +32,9 @@ class Round(Func):
 def home(request):
     context = {
         'movies': Movie.objects.filter(
-            release_date__lte=timezone.now()).order_by('-release_date')[:6].annotate(avg_score=Round(Avg('review__rating'))).annotate(review_count=Count('title'))
+            release_date__lte=timezone.now()).order_by('-release_date')[:6].annotate(avg_score=Round(Avg('review__rating'))).annotate(review_count=Count('title')),
+        'places': Place.objects.filter(
+            release_date__lte=timezone.now()).order_by('-release_date')[:6]
     }
     return render(request, 'movieapp/index.html', context)
 

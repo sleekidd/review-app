@@ -172,11 +172,10 @@
         data-easing2="ease-out" role="banner" class="navbar w-nav">
         <div class="container nav">
             <a href="{% url 'movie-home' %}">
-                <img alt="Wingman" src="{% static "movieapp/img/reviewbeta-logo.png" %}" style="width: 148px;
+                <img alt="Reviewbeta" src="{% static "movieapp/img/reviewbeta-logo.png" %}" style="width: 148px;
                 height: 40px;
                 border-bottom-style: none;
-                background-repeat: no-repeat;" alt=""
-                />
+                background-repeat: no-repeat;" alt="" />
             </a>
             <!-- <div class="pollen-logo-wrapper">
             </div> -->
@@ -184,11 +183,19 @@
                 <div class="us-navigation-collection-list w-dyn-list">
                     <div role="list" class="us-navigation-collection-list w-dyn-items">
                         <div role="listitem" class="us-navigation-collection-item w-dyn-item"><a
-                                href="https://support.pollen.co" class="ui is--ui-white is--menu">Support</a></div>
+                                href="https://support.pollen.co" class="ui is--ui-white is--menu">Deals</a></div>
                     </div>
-                </div><a href="http://next.pollen.co/login" class="primary-nav_link-block w-inline-block">
-                    <div class="account-icon"></div>
+                </div><a href="#" class="primary-nav_link-block w-inline-block">
+                    <!-- <div class="account-icon"></div> -->
+                    <div class="ui is--ui-white is--menu">Events</div>
+                </a>
+                <a href="#" class="primary-nav_link-block w-inline-block">
+                    <!-- <div class="account-icon"></div> -->
                     <div class="ui is--ui-white is--menu">Login</div>
+                </a>
+                <a href="#" class="primary-nav_link-block w-inline-block">
+                    <!-- <div class="account-icon"></div> -->
+                    <div class="ui is--ui-white is--menu">Sign up</div>
                 </a>
             </div>
             <div class="hamburger-menu-wrapper"><a href="#" class="primary-nav_link-block w-inline-block">
@@ -355,15 +362,16 @@
                     <div class="editorial-nav_heading-wrapper">
                         <div class="div-block-47">
                             <h3>Find your Experience<br /></h3>
-                        </div><a href="/experiences/all" class="cta-wrapper w-inline-block">
+                        </div>
+                        <a href="/experiences/all" class="cta-wrapper w-inline-block">
                             <div class="body-sm-strong-old">View all</div>
                             <div class="hero__arrow"><img
                                     src="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/61e5827a1262b46b24b74968_arrow.svg"
                                     loading="lazy" alt="" class="hero__arrow-image" /></div>
                         </a>
                     </div>
-                    <div class="editorial-nav_grid single-row"><a data-analytics-item="true"
-                            data-track-item_position="1" data-track_label="Beach Breaks"
+                    <div class="editorial-nav_grid single-row">
+                        <a data-analytics-item="true" data-track-item_position="1" data-track_label="Beach Breaks"
                             data-track_action="Category circle clicked"
                             id="w-node-_6a824590-140b-3288-2d91-05a51bad9d43-71c26ce9" href="/experiences/beach-breaks"
                             class="editorial-nav_item w-inline-block">
@@ -371,7 +379,8 @@
                             <div class="editorial-nav_gradient-overlay"></div><img
                                 src="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/6135e7744fb7ec3814a7eb68_Beach%20aerial%20shot.jpg"
                                 loading="lazy" alt="" class="full-cover-img" />
-                        </a><a data-analytics-item="true" data-track-item_position="2" data-track_label="City Breaks"
+                        </a>
+                        <a data-analytics-item="true" data-track-item_position="2" data-track_label="City Breaks"
                             data-track_action="Category circle clicked"
                             id="w-node-_6a824590-140b-3288-2d91-05a51bad9d48-71c26ce9" href="/experiences/city-breaks"
                             class="editorial-nav_item w-inline-block">
@@ -382,7 +391,8 @@
                                 sizes="(max-width: 479px) 90vw, (max-width: 991px) 29vw, (max-width: 1279px) 20vw, 17vw"
                                 srcset="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/60059e86e15f281f71a70b22_right-p-500.png 500w, https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/60059e86e15f281f71a70b22_right.png 702w"
                                 alt="" class="full-cover-img" />
-                        </a><a data-analytics-item="true" data-track-item_position="3" data-track_label="Festivals"
+                        </a>
+                        <a data-analytics-item="true" data-track-item_position="3" data-track_label="Festivals"
                             data-track_action="Category circle clicked"
                             id="w-node-_6a824590-140b-3288-2d91-05a51bad9d4d-71c26ce9" href="/experiences/festivals"
                             class="editorial-nav_item w-inline-block">
@@ -393,7 +403,20 @@
                                 sizes="(max-width: 479px) 90vw, (max-width: 991px) 29vw, (max-width: 1279px) 20vw, 17vw"
                                 srcset="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/5f86ac458e3a3c8ad87f50c3_festival-01-p-500.jpeg 500w, https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/5f86ac458e3a3c8ad87f50c3_festival-01-p-1080.jpeg 1080w, https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/5f86ac458e3a3c8ad87f50c3_festival-01.jpg 1500w"
                                 alt="" class="full-cover-img" />
-                        </a></div>
+                        </a>
+                        <a data-analytics-item="true" data-track-item_position="4" data-track_label="Festivals"
+                            data-track_action="Category circle clicked"
+                            id="w-node-_6a824590-140b-3288-2d91-05a51bad9d4d-71c26ce9" href="/experiences/festivals"
+                            class="editorial-nav_item w-inline-block">
+                            <h3 class="editorial-nav_heading">Festivals</h3>
+                            <div class="editorial-nav_gradient-overlay"></div><img
+                                src="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/5f86ac458e3a3c8ad87f50c3_festival-01.jpg"
+                                loading="lazy"
+                                sizes="(max-width: 479px) 90vw, (max-width: 991px) 29vw, (max-width: 1279px) 20vw, 17vw"
+                                srcset="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/5f86ac458e3a3c8ad87f50c3_festival-01-p-500.jpeg 500w, https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/5f86ac458e3a3c8ad87f50c3_festival-01-p-1080.jpeg 1080w, https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/5f86ac458e3a3c8ad87f50c3_festival-01.jpg 1500w"
+                                alt="" class="full-cover-img" />
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -492,7 +515,7 @@
                 <div class="editorial-nav_heading-wrapper">
                     <div class="div-block-47">
                         <h2>Last chance<br /></h2>
-                    </div><a href="{% url 'movie-all' %}" class="cta-wrapper w-inline-block">
+                    </div><a href="{% url 'place-all' %}" class="cta-wrapper w-inline-block">
                         <div class="body-sm-strong-old">View all</div>
                         <div class="hero__arrow"><img
                                 src="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/61e5827a1262b46b24b74968_arrow.svg"
@@ -516,7 +539,11 @@
                                     <div class="h4-wrapper">
                                         <h4 class="headline-md">{{ place.title|truncatewords:6 }}</h4>
                                     </div>
-                                    <div class="label book">{{ place.content|truncatewords:10}}
+                                    <div class="label book">
+                                        {% for category in place.category.all %}
+                                        {{ category.name|truncatewords:12 }}{% if not forloop.last %},
+                                        {% endif %}
+                                        {% endfor %} in {{ place.location }}
                                     </div>
                                     <div class="tag-container">
                                         <div class="tag-wrapper">
@@ -556,7 +583,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{% url 'movie-detail' movie.slug %}" class="event-url-link w-inline-block">
+                            <a href="{% url 'place-detail' place.slug %}" class="event-url-link w-inline-block">
                             </a>
                         </div>
                         {% endfor %}
@@ -575,11 +602,10 @@
             <div class="container">
                 <div class="footer-wrapper">
                     <a href="{% url 'movie-home' %}">
-                        <img alt="Wingman" src="{% static "movieapp/img/reviewbeta-logo.png" %}" style="width: 148px;
+                        <img alt="Reviewbeta" src="{% static "movieapp/img/reviewbeta-logo.png" %}" style="width: 148px;
                         height: 40px;
                         border-bottom-style: none;
-                        background-repeat: no-repeat;" alt=""
-                        />
+                        background-repeat: no-repeat;" alt="" />
                     </a>
                     <!-- <div id="w-node-c4b3eaee-5154-06ee-8ad6-7cfa69a5801e-69a5801b" class="pollen-logo-wrapper footer"><a
                             href="/" aria-current="page" class="pollen-header-logo w-inline-block w--current"></a></div> -->

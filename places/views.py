@@ -12,18 +12,52 @@ from django.views.generic import (
     DeleteView,
     TemplateView
 )
-from .models import Movie, Cast, Place, Review
+from .models import Place
 from django.utils import timezone
-from .forms import ReviewForm
+# from .forms import ReviewForm
 from django.http import JsonResponse
 from django.db.models import Avg, Func, Count
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
-def home(request):
-    context = {
-        'places': Place.objects.filter(
-            release_date__lte=timezone.now()).order_by('-release_date')[:6]
-    }
-    return render(request, 'movieapp/index.html', context)
+def places(request):
+    place_list = Place.objects.filter(
+                release_date__lte=timezone.now()).order_by('-release_date')
+
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(place_list, 6)
+    try:
+        places = paginator.page(page)
+    except PageNotAnInteger:
+        places = paginator.page(1)
+    except EmptyPage:
+        places = paginator.page(paginator.num_pages)
+
+    return render(request, 'places/places.html', { 'places': places })
+
+class PlaceDetailView(DetailView):
+    model = Place
+    template_name = 'places/place_detail.html'
+
+    # def get_context_data(self, **kwargs):
+    #     data = super().get_context_data(**kwargs)
+
+    #     comments_connected = Review.objects.filter(
+    #         movie=self.get_object()).order_by('-created_date')
+    #     data['comments'] = comments_connected
+    #     if self.request.user.is_authenticated:
+    #         data['comment_form'] = ReviewForm(instance=self.request.user)
+
+    #     movie_rating = Place.objects.annotate(avg_score=Round(Avg('review__rating'))).annotate(review_count=Count('title'))
+    #     data['movie_ratings'] = movie_rating
+
+    #     return data
+
+    # def post(self, request, *args, **kwargs):
+    #     new_comment = Review(review=request.POST.get(
+    #         'review'), rating=request.POST.get('rating'), author=self.request.user, movie=self.get_object())
+
+    #     new_comment.save()
+    #     return self.get(self, request, *args, **kwargs)

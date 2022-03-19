@@ -28,6 +28,7 @@ urlpatterns = [
                                                 redirect_authenticated_user=True), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('', include('movieapp.urls')),
+    path('', include('places.urls')),
 ]
 
 if settings.DEBUG:
