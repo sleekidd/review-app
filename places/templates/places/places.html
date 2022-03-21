@@ -150,17 +150,29 @@
         <div data-collapse="tiny" data-animation="default" data-duration="400" data-doc-height="1" data-easing="ease-in"
             data-easing2="ease-out" role="banner" class="navbar w-nav">
             <div class="container nav">
-                <div class="pollen-logo-wrapper"><a href="https://www.pollen.co"
-                        class="pollen-header-logo w-inline-block"></a></div>
+                <a href="{% url 'movie-home' %}">
+                    <img alt="Reviewbeta" src="{% static "movieapp/img/reviewbeta-logo.png" %}" style="width: 148px;
+                    height: 40px;
+                    border-bottom-style: none;
+                    background-repeat: no-repeat;" alt="" />
+                </a>
                 <div class="nav_desktop-links-wrapper">
                     <div class="us-navigation-collection-list w-dyn-list">
                         <div role="list" class="us-navigation-collection-list w-dyn-items">
                             <div role="listitem" class="us-navigation-collection-item w-dyn-item"><a
-                                    href="https://support.pollen.co" class="ui is--ui-white is--menu">Support</a></div>
+                                    href="https://support.pollen.co" class="ui is--ui-white is--menu">Deals</a></div>
                         </div>
-                    </div><a href="http://next.pollen.co/login" class="primary-nav_link-block w-inline-block">
-                        <div class="account-icon"></div>
+                    </div><a href="#" class="primary-nav_link-block w-inline-block">
+                        <!-- <div class="account-icon"></div> -->
+                        <div class="ui is--ui-white is--menu">Events</div>
+                    </a>
+                    <a href="#" class="primary-nav_link-block w-inline-block">
+                        <!-- <div class="account-icon"></div> -->
                         <div class="ui is--ui-white is--menu">Login</div>
+                    </a>
+                    <a href="#" class="primary-nav_link-block w-inline-block">
+                        <!-- <div class="account-icon"></div> -->
+                        <div class="ui is--ui-white is--menu">Sign up</div>
                     </a>
                 </div>
                 <div class="hamburger-menu-wrapper"><a href="#" class="primary-nav_link-block w-inline-block">
@@ -373,8 +385,12 @@
         <div class="section-footer-us">
             <div class="container">
                 <div class="footer-wrapper">
-                    <div id="w-node-c4b3eaee-5154-06ee-8ad6-7cfa69a5801e-69a5801b" class="pollen-logo-wrapper footer"><a
-                            href="/" class="pollen-header-logo w-inline-block"></a></div>
+                    <a href="{% url 'movie-home' %}">
+                        <img alt="Reviewbeta" src="{% static "movieapp/img/reviewbeta-logo.png" %}" style="width: 148px;
+                        height: 40px;
+                        border-bottom-style: none;
+                        background-repeat: no-repeat;" alt="" />
+                    </a>
                     <div id="w-node-c4b3eaee-5154-06ee-8ad6-7cfa69a58020-69a5801b" class="footer-column1-links-wrapper">
                         <a href="/booking-guide" class="footer-link-txt">Booking Guide</a><a href="/what-is-pollen"
                             class="footer-link-txt">What is Pollen?</a><a href="https://support.pollen.co"

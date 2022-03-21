@@ -32,6 +32,347 @@
         href="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/601bfdeaf8e1af8384013294_icon-256x256.png"
         rel="apple-touch-icon" />
     <link href="https://pollen.co/experiences/all" rel="canonical" />
+
+    <style>
+        .card {
+    margin-bottom: 1.5rem;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #0D111A;
+    background-clip: border-box;
+    border: 1px solid #0D111A;
+    border-radius: 0.25rem;
+}
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.5rem;
+}
+.card iframe {
+    border: none;
+    outline: none;
+}
+.w-100 {
+    width: 100% !important;
+}
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+.card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+
+.bg-secondary {
+    background: #e9ecef !important;
+}
+.card-header, .card-footer {
+    background: none;
+}
+.card-header {
+    padding: 1.125rem 1.5rem;
+}
+.justify-content-between {
+    justify-content: space-between !important;
+}
+.d-flex {
+    display: flex !important;
+}
+.bg-secondary {
+    background-color: #6c757d !important;
+}
+.card-header {
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid #e9ecef;
+}
+.align-items-center {
+    align-items: center !important;
+}
+.d-flex {
+    display: flex !important;
+}
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.5rem;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+textarea.form-control {
+    height: auto;
+}
+
+.form-control, .form-control-lg {
+    padding-left: 0.75rem;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.3125rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+textarea {
+    overflow: auto;
+    resize: vertical;
+}
+input, button, select, optgroup, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+ul:last-child, dl:last-child, ol:last-child {
+    margin-bottom: 0;
+}
+.list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.list-group-flush .list-group-item {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+}
+.list-group-item:first-child {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+.list-group-item {
+    border: 1px solid #e9ecef;
+}
+.pb-4, .py-4 {
+    padding-bottom: 2.25rem !important;
+}
+.pt-4, .py-4 {
+    padding-top: 2.25rem !important;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #0D111A;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.card > .list-group > .list-group-item > .media:only-child {
+    padding: 0.375rem 0;
+}
+
+.media {
+    display: flex;
+    align-items: flex-start;
+}
+.media > .avatar:first-child.avatar-xs, .media > .avatar:first-child.avatar-sm {
+    margin-right: 0.75rem;
+}
+.media > .avatar:first-child {
+    margin-right: 1.5rem;
+}
+.avatar.avatar-sm {
+    width: 3rem;
+    height: 3rem;
+}
+.avatar {
+    border-radius: 50%;
+    width: 4.5rem;
+    height: 4.5rem;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.mb-2, .my-2 {
+    margin-bottom: 0.75rem !important;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, .display-1, .display-2, .display-3, .display-4 {
+    display: block;
+}
+.text-small, h6 + p, h6 + p + a, h6 + span, .h6 + span {
+    font-size: 0.875rem;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+.space-sm {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.rounded {
+    border-radius: 0.25rem !important;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+.rounded {
+    border-radius: 0.25rem!important;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+.ml-auto, .mx-auto {
+    margin-left: auto !important;
+}
+
+.mr-auto, .mx-auto {
+    margin-right: auto !important;
+}
+.justify-content-between {
+    justify-content: space-between !important;
+}
+.flex-column {
+    flex-direction: column !important;
+}
+.d-flex {
+    display: flex !important;
+}
+@media (min-width: 992px) {
+.col-lg-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+}
+}
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
+    position: relative;
+    width: 100%;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+.mb-2, .my-2 {
+    margin-bottom: 0.75rem !important;
+}
+@media (min-width: 576px) {
+.mb-sm-0, .my-sm-0 {
+    margin-bottom: 0 !important;
+}
+}
+
+.mb-4, .my-4 {
+    margin-bottom: 2.25rem !important;
+}
+@media (min-width: 992px) {
+.col-lg-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+}
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -12px;
+    margin-left: -12px;
+}
+.lead {
+    margin-bottom: 1.5rem;
+    line-height: 1.875rem;
+    display: block;
+    font-weight: 400;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1.5rem !important;
+}
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+.text-title {
+    margin-bottom: 0.75rem !important;
+    font-size: 40px;
+}
+
+.embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden; }
+  .embed-responsive::before {
+    display: block;
+    content: ""; }
+  .embed-responsive .embed-responsive-item,
+  .embed-responsive iframe,
+  .embed-responsive embed,
+  .embed-responsive object,
+  .embed-responsive video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0; }
+
+.embed-responsive-21by9::before {
+  padding-top: 42.85714%; }
+
+.embed-responsive-16by9::before {
+  padding-top: 56.25%; }
+
+.embed-responsive-4by3::before {
+  padding-top: 75%; }
+
+.embed-responsive-1by1::before {
+  padding-top: 100%; }
+
+.embed-responsive-21by9::before {
+  padding-top: 42.85714%; }
+
+.embed-responsive-16by9::before {
+  padding-top: 56.25%; }
+
+.embed-responsive-3by4::before {
+  padding-top: 133.33333%; }
+
+.embed-responsive-1by1::before {
+  padding-top: 100%; }
+
+.embed-responsive-21by9::before {
+  padding-top: 42.85714%; }
+
+.embed-responsive-16by9::before {
+  padding-top: 56.25%; }
+
+.embed-responsive-3by4::before {
+  padding-top: 133.33333%; }
+
+.embed-responsive-1by1::before {
+  padding-top: 100%; }
+
+.embed-responsive-21by9::before {
+  padding-top: 42.85714%; }
+
+.embed-responsive-16by9::before {
+  padding-top: 56.25%; }
+
+.embed-responsive-4by3::before {
+  padding-top: 75%; }
+
+.embed-responsive-1by1::before {
+  padding-top: 100%; }
+    </style>
+
     <style type="text/css">
         body {
             -webkit-font-smoothing: antialiased;
@@ -150,17 +491,29 @@
         <div data-collapse="tiny" data-animation="default" data-duration="400" data-doc-height="1" data-easing="ease-in"
             data-easing2="ease-out" role="banner" class="navbar w-nav">
             <div class="container nav">
-                <div class="pollen-logo-wrapper"><a href="https://www.pollen.co"
-                        class="pollen-header-logo w-inline-block"></a></div>
+                <a href="{% url 'movie-home' %}">
+                    <img alt="Reviewbeta" src="{% static "movieapp/img/reviewbeta-logo.png" %}" style="width: 148px;
+                    height: 40px;
+                    border-bottom-style: none;
+                    background-repeat: no-repeat;" alt="" />
+                </a>
                 <div class="nav_desktop-links-wrapper">
                     <div class="us-navigation-collection-list w-dyn-list">
                         <div role="list" class="us-navigation-collection-list w-dyn-items">
                             <div role="listitem" class="us-navigation-collection-item w-dyn-item"><a
-                                    href="https://support.pollen.co" class="ui is--ui-white is--menu">Support</a></div>
+                                    href="https://support.pollen.co" class="ui is--ui-white is--menu">Deals</a></div>
                         </div>
-                    </div><a href="http://next.pollen.co/login" class="primary-nav_link-block w-inline-block">
-                        <div class="account-icon"></div>
+                    </div><a href="#" class="primary-nav_link-block w-inline-block">
+                        <!-- <div class="account-icon"></div> -->
+                        <div class="ui is--ui-white is--menu">Events</div>
+                    </a>
+                    <a href="#" class="primary-nav_link-block w-inline-block">
+                        <!-- <div class="account-icon"></div> -->
                         <div class="ui is--ui-white is--menu">Login</div>
+                    </a>
+                    <a href="#" class="primary-nav_link-block w-inline-block">
+                        <!-- <div class="account-icon"></div> -->
+                        <div class="ui is--ui-white is--menu">Sign up</div>
                     </a>
                 </div>
                 <div class="hamburger-menu-wrapper"><a href="#" class="primary-nav_link-block w-inline-block">
@@ -226,19 +579,7 @@
                 </div>
             </nav>
         </div>
-        <div class="section-light-alt wf-section"
-            style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url({{ object.image.url }}); background-size: cover; background-position: center; ">
-            <div class="spacer-xxl"></div>
-            <div class="container">
-                <div class="is--limit-text-width">
-                    <div>
-                        <h1 class="gradient-text_day">Unmissable experiences on Pollen</h1>
-                        <h1 class="gradient-text_day w-condition-invisible">All</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="spacer-l"></div>
-        </div>
+        
     </div>
     <!-- <div data-analytics-module="true" data-track-module_action="Discovery Categories" data-track-module_label="Explore"
         data-track-module_position="1" class="section-secondary-navbar wf-section">
@@ -295,6 +636,80 @@
             </div>
         </div>
     </div> -->
+
+    <section class="bg-white space-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mb-4 mb-sm-0">
+                    <img alt="Image" src="{{ object.image.url }}" class="rounded img-fluid" style="width: 641px; height: 333px; object-fit: cover;" />
+                </div>
+                <!--end of col-->
+                <div class="col-lg-4 d-flex flex-column justify-content-between mr-auto ml-auto">
+                    <div>
+                        <h1 class="text-title">{{ object.title }}</h1>
+                        <h2 class="lead mb-3">{% for cast in object.cast.all %}
+                            {{ cast.name }}{% if not forloop.last %},{% endif %}
+                            {% endfor %}</h2>
+                        <div>
+                            <span class="badge badge-secondary mr-3">
+                                {% for category in object.category.all %} 
+                                {{ category.name }} 
+                                {% if not forloop.last %}|{% endif %} 
+                                {% endfor %}
+                            </span>
+                        </div>
+                        {% for movie in movie_ratings %}
+                        {% if movie == object %}
+                        
+                        <div class="mt-2">
+                            <i class="fa fa-star {% if movie.avg_score > 0 %} checked {% endif %}"></i>
+                            <i class="fa fa-star {% if movie.avg_score > 1 %} checked {% endif %}"></i>
+                            <i class="fa fa-star {% if movie.avg_score > 2 %} checked {% endif %}"></i>
+                            <i class="fa fa-star {% if movie.avg_score > 3 %} checked {% endif %}"></i>
+                            <i class="fa fa-star {% if movie.avg_score > 4 %} checked {% endif %}"></i>
+                            <span>
+                              {% if movie.avg_score > 1 %}
+                                {{ movie.review_count }}
+                                  {% if movie.review_count > 1 %} Reviews {% else %}
+                                  Review
+                                  {% endif %}
+                              {% else %}
+                                No reviews
+                              {% endif %}
+                            </span>
+                          </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <div class="btn-group mb-2">
+                            <button type="button" class="btn btn-success btn-lg">Write a Review</button>
+                            <button type="button"
+                                class="btn btn-success dropdown-toggle dropdown-toggle-split dropdown-toggle-no-arrow"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="icon-dots-three-horizontal"></i>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm">
+                                {% if user.is_superuser %}
+                                <a class="dropdown-item" href="{% url 'movie-update' object.id %}">Update</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'movie-delete' object.id %}">Delete</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="text-small">
+                            <span class="text-muted">&copy; Kemi Adetiba Visuals 2021</span>
+                        </div>
+                    </div>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+
     <div class="section-light">
         <div class="section-divider-line"></div>
         <div class="spacer-xxxl"></div>
@@ -304,7 +719,12 @@
                 <div class="editorial-nav_grid-wrapper">
                     <div class="editorial-nav_heading-wrapper">
                         <div class="div-block-47">
-                            <h4 class="headline-md">Overview<br /></h4>
+                            <h4 class="headline-md">
+                                {% for category in object.category.all %}
+                        {{ category.name|truncatewords:12 }}{% if not forloop.last %},
+                        {% endif %}
+                        {% endfor %} in {{ object.location }}
+                    </h4>
                         </div>
                         <!-- <a href="/experiences/all" class="cta-wrapper w-inline-block">
                             <div class="body-sm-strong-old">View all</div>
@@ -313,16 +733,103 @@
                                     loading="lazy" alt="" class="hero__arrow-image" /></div>
                         </a> -->
                     </div>
-                    <div class="body-lg">{{ place.content }}</div>
+                    <div class="body-lg">{{ object.content }}</div>
                     <div class="spacer-xl"></div>
-                    <div class="body-lg">
-                        {% for category in place.category.all %}
-                        {{ category.name|truncatewords:12 }}{% if not forloop.last %},
-                        {% endif %}
-                        {% endfor %} in {{ place.location }}
+                    <div class="rounded mb-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item"
+                                src="https://www.youtube.com/embed/{{ object.trailer }}" allowfullscreen></iframe>
+                        </div>
                     </div>
+                    <!--end of video cover-->
+
+                    <div class="spacer-xl"></div>
+
                     
-                    <div class="editorial-nav_grid single-row"><a data-analytics-item="true"
+                    <h4 class="headline-md">
+                        {% if comments %}
+                    {{ object.number_of_comments }}
+                    Review{{ object.number_of_comments|pluralize }}
+                    {% else %}
+                    No Reviews
+                    {% endif %}
+                    </h4>
+
+                    
+                        <div class="card-header bg-secondary d-flex justify-content-between">
+                          <button class="btn btn-secondary" type="button" data-target="#comment-reply" data-toggle="collapse" aria-expanded="false" aria-controls="comment-reply">Post a reply</button>
+                          <form class="d-flex align-items-center">
+                            <span class="mr-2 text-muted text-small text-nowrap">Sort by:</span>
+                            <select class="custom-select">
+                              <option value="alpha">Alphabetical</option>
+                              <option value="old-new" selected>Newest</option>
+                              <option value="new-old">Popular</option>
+                              <option value="recent">Recently Updated</option>
+                            </select>
+                          </form>
+                        </div>
+
+                        <div class="collapse" id="comment-reply">
+                            <form class="card-body">
+                              <div class="form-group">
+                                <textarea class="form-control from-control-lg" id="comment-reply-text" name="comment-reply" rows="4" placeholder="Type your reply here"></textarea>
+                              </div>
+                              <div class="mb-2">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" name="notify-reply" id="check-notify">
+                                  <label class="custom-control-label text-small" for="check-notify">Notify me when someone replies</label>
+                                </div>
+                              </div>
+                              <div class="d-flex align-items-center">
+                                <button type="submit" class="btn btn-success mr-3">Submit reply</button>
+                                <a href="#comment-reply" class="text-small text-muted" data-toggle="collapse" aria-expanded="true" aria-controls="comment-reply">Cancel</a>
+                              </div>
+                            </form>
+                          </div>
+                          
+                          {% if comments %}
+                          <ul class="list-group list-group-flush list-group-comments">
+
+                            {% for comment in comments %}
+                            <li class="list-group-item py-4">
+                              <div class="media">
+                                <img alt="Image" src="{{ comment.author.profile.image.url }}" class="avatar avatar-sm">
+                                <div class="media-body">
+                                  <div class="mb-2">
+                                    <span class="h6 mb-0">{{ comment.author }}</span>
+                                    <span class="text-muted">Making awesome products</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <i class="fa fa-star {% if comment.rating > 0 %} checked {% endif %}"></i>
+                                        <i class="fa fa-star {% if comment.rating > 1 %} checked {% endif %}"></i>
+                                        <i class="fa fa-star {% if comment.rating > 2 %} checked {% endif %}"></i>
+                                        <i class="fa fa-star {% if comment.rating > 3 %} checked {% endif %}"></i>
+                                        <i class="fa fa-star {% if comment.rating > 4 %} checked {% endif %}"></i>
+                                        <small class="text-muted">{{ comment.created_date|date:'d/m/Y' }}</small>
+                                        <p class="body-lg">
+                                          {{ comment.review|safe }}
+                                        </p>
+                              <div class="d-flex align-items-center">
+                                <!-- <div class="mr-2">
+                                  <button class="btn btn-sm btn-outline-primary">Reply</button>
+                                  <button class="btn btn-sm btn-outline-primary"><i class="icon-thumbs-up"></i>&nbsp;(2)</button>
+                                </div> -->
+                                
+                              </div>
+          
+                            </li>
+                            {% endfor %}
+          
+                          </ul>
+                          {% else %}
+                    <div class="card-body">
+                        <strong class="text-secondary">No reviews yet...</strong>
+                    </div>
+                    {% endif %}
+<!--                     
+                    <div class="editorial-nav_grid single-row">
+                        <a data-analytics-item="true"
                             data-track-item_position="1" data-track_label="Beach Breaks"
                             data-track_action="Category circle clicked"
                             id="w-node-_6a824590-140b-3288-2d91-05a51bad9d43-71c26ce9" href="/experiences/beach-breaks"
@@ -331,7 +838,8 @@
                             <div class="editorial-nav_gradient-overlay"></div><img
                                 src="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/6135e7744fb7ec3814a7eb68_Beach%20aerial%20shot.jpg"
                                 loading="lazy" alt="" class="full-cover-img" />
-                        </a><a data-analytics-item="true" data-track-item_position="2" data-track_label="City Breaks"
+                        </a>
+                        <a data-analytics-item="true" data-track-item_position="2" data-track_label="City Breaks"
                             data-track_action="Category circle clicked"
                             id="w-node-_6a824590-140b-3288-2d91-05a51bad9d48-71c26ce9" href="/experiences/city-breaks"
                             class="editorial-nav_item w-inline-block">
@@ -342,7 +850,8 @@
                                 sizes="(max-width: 479px) 90vw, (max-width: 991px) 29vw, (max-width: 1279px) 20vw, 17vw"
                                 srcset="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/60059e86e15f281f71a70b22_right-p-500.png 500w, https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/60059e86e15f281f71a70b22_right.png 702w"
                                 alt="" class="full-cover-img" />
-                        </a><a data-analytics-item="true" data-track-item_position="3" data-track_label="Festivals"
+                        </a>
+                        <a data-analytics-item="true" data-track-item_position="3" data-track_label="Festivals"
                             data-track_action="Category circle clicked"
                             id="w-node-_6a824590-140b-3288-2d91-05a51bad9d4d-71c26ce9" href="/experiences/festivals"
                             class="editorial-nav_item w-inline-block">
@@ -353,18 +862,241 @@
                                 sizes="(max-width: 479px) 90vw, (max-width: 991px) 29vw, (max-width: 1279px) 20vw, 17vw"
                                 srcset="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/5f86ac458e3a3c8ad87f50c3_festival-01-p-500.jpeg 500w, https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/5f86ac458e3a3c8ad87f50c3_festival-01-p-1080.jpeg 1080w, https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/5f86ac458e3a3c8ad87f50c3_festival-01.jpg 1500w"
                                 alt="" class="full-cover-img" />
-                        </a></div>
+                        </a>
+                    </div> -->
                 </div>
+
+                
                 <div class="trust-points-mini">
-                    <div class="trust-points-mini_heading-wrapper">
+
+                    <div class="col-12 col-md-4">
+                        <div class="card">
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6052.255779374734!2d-73.9634766!3d40.671151!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0a45bce6bb%3A0x5bf020f45a685ee6!2s200+Eastern+Pkwy%2C+Brooklyn%2C+NY+11238%2C+USA!5e0!3m2!1sen!2sau!4v1512181921736"
+                          allowfullscreen class="card-img-top w-100"></iframe>
+                          <div class="card-body">
+                            <h5>{{ object.title }}</h5>
+                            <p>
+                                {{ object.address }}
+                              <br>{{ object.location }}
+                            </p>
+                            <div>
+                              <a href="#" class="btn btn-outline-primary">Directions</a>
+                              <a href="#" class="btn btn-outline-primary"><i class="icon-phone"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card card-borderless bg-secondary">
+                          <a class="card-body" href="#">
+                            <div class="d-flex justify-content-between mb-3">
+                              <img alt="Image" src="assets/img/logo-w-gradient.svg" />
+                              <span class="title-decorative">Sponsor</span>
+                            </div>
+                            <span class="h6">A robust suite of styled elements and pages for Bootstrap 4</span>
+                          </a>
+                        </div>
+                        <!-- end card -->
+                        <div class="card">
+                          <div class="card-header d-flex justify-content-between">
+                            <div>
+                              <span class="h6">Recent photos</span>
+                            </div>
+                            <a href="#">View all &rsaquo;</a>
+                          </div>
+                          <div class="card-body">
+                            <div class="image-gallery image-gallery-lg row">
+                              <div class="col">
+                                <img alt="Image" src="assets/img/photo-man-laptop.jpg" class="mb-3" />
+                                <img alt="Image" src="assets/img/photo-man-meeting.jpg" />
+                              </div>
+                              <div class="col-6">
+                                <img alt="Image" src="assets/img/photo-woman-cafe.jpg" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--end of card-->
+                        <div class="card">
+                          <div class="card-header d-flex justify-content-between">
+                            <div>
+                              <span class="h6">Members (213)</span>
+                            </div>
+                            <a href="#">View all &rsaquo;</a>
+                          </div>
+                          <div class="card-body">
+                            <ul class="list-unstyled list-spacing-sm">
+          
+                              <li>
+                                <a class="media" href="#">
+                                  <img alt="Image" src="assets/img/avatar-male-1.jpg" class="avatar avatar-sm mr-3" />
+                                  <div class="media-body">
+                                    <span class="h6 mb-0">Daniel Cameron</span>
+                                    <span class="text-muted">Product Designer</span>
+                                  </div>
+                                </a>
+                              </li>
+          
+                              <li>
+                                <a class="media" href="#">
+                                  <img alt="Image" src="assets/img/avatar-female-1.jpg" class="avatar avatar-sm mr-3" />
+                                  <div class="media-body">
+                                    <span class="h6 mb-0">Caitlyn Halsy</span>
+                                    <span class="text-muted">Marketing Professional</span>
+                                  </div>
+                                </a>
+                              </li>
+          
+                              <li>
+                                <a class="media" href="#">
+                                  <img alt="Image" src="assets/img/avatar-male-2.jpg" class="avatar avatar-sm mr-3" />
+                                  <div class="media-body">
+                                    <span class="h6 mb-0">Toby Marsh</span>
+                                    <span class="text-muted">Developer</span>
+                                  </div>
+                                </a>
+                              </li>
+          
+                              <li>
+                                <a class="media" href="#">
+                                  <img alt="Image" src="assets/img/avatar-female-2.jpg" class="avatar avatar-sm mr-3" />
+                                  <div class="media-body">
+                                    <span class="h6 mb-0">Lucille Freebody</span>
+                                    <span class="text-muted">Graphic Designer</span>
+                                  </div>
+                                </a>
+                              </li>
+          
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- end card -->
+                        <div class="card">
+                          <div class="card-header d-flex justify-content-between">
+                            <div>
+                              <span class="h6">Related Groups</span>
+                            </div>
+                            <a href="#">View all &rsaquo;</a>
+                          </div>
+                          <div class="card-body">
+                            <ul class="list-unstyled list-spacing-sm">
+          
+                              <li>
+                                <div class="media">
+                                  <a href="#">
+                                    <img alt="Image" src="assets/img/graphic-product-bench-thumb.jpg" class="avatar avatar-square rounded mr-3" />
+                                  </a>
+                                  <div class="media-body">
+                                    <a href="#">
+                                      <span class="h6">Bench</span>
+                                    </a>
+                                    <span class="badge badge-secondary">Productivity</span>
+                                    <div class="text-muted">
+                                      <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                          <small><i class="icon-heart"></i> 373</small>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <small><i class="icon-message"></i> 62</small>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+          
+                              <li>
+                                <div class="media">
+                                  <a href="#">
+                                    <img alt="Image" src="assets/img/graphic-product-kin-thumb.jpg" class="avatar avatar-square rounded mr-3" />
+                                  </a>
+                                  <div class="media-body">
+                                    <a href="#">
+                                      <span class="h6">Kin</span>
+                                    </a>
+                                    <span class="badge badge-secondary">Lifestyle</span>
+                                    <div class="text-muted">
+                                      <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                          <small><i class="icon-heart"></i> 84</small>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <small><i class="icon-message"></i> 21</small>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+          
+                              <li>
+                                <div class="media">
+                                  <a href="#">
+                                    <img alt="Image" src="assets/img/graphic-product-paydar-thumb.jpg" class="avatar avatar-square rounded mr-3" />
+                                  </a>
+                                  <div class="media-body">
+                                    <a href="#">
+                                      <span class="h6">Paydar</span>
+                                    </a>
+                                    <span class="badge badge-secondary">Productivity</span>
+                                    <div class="text-muted">
+                                      <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                          <small><i class="icon-heart"></i> 253</small>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <small><i class="icon-message"></i> 19</small>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+          
+                              <li>
+                                <div class="media">
+                                  <a href="#">
+                                    <img alt="Image" src="assets/img/graphic-product-pipeline-thumb.jpg" class="avatar avatar-square rounded mr-3" />
+                                  </a>
+                                  <div class="media-body">
+                                    <a href="#">
+                                      <span class="h6">pipeline.js</span>
+                                    </a>
+                                    <span class="badge badge-secondary">Development</span>
+                                    <div class="text-muted">
+                                      <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                          <small><i class="icon-heart"></i> 84</small>
+                                        </li>
+                                        <li class="list-inline-item">
+                                          <small><i class="icon-message"></i> 25</small>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+          
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- end card -->
+                      </div>
+                      <!--end of col-->
+                    </div>
+                    <!--end of row-->
+                  </div>
+                  <!--end of container-->
+                </section>
+                <!--end of section-->
+
+                    <!-- <div class="trust-points-mini_heading-wrapper">
                         <h3>Why Pollen<br /></h3><a href="/what-is-pollen" class="cta-wrapper w-inline-block">
                             <div class="body-sm-strong-old">More</div>
                             <div class="hero__arrow"><img
                                     src="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/61e5827a1262b46b24b74968_arrow.svg"
                                     loading="lazy" alt="" class="hero__arrow-image" /></div>
                         </a>
-                    </div>
-                    <ul role="list" class="w-list-unstyled">
+                    </div> -->
+                    <!-- <ul role="list" class="w-list-unstyled">
                         <li class="trust-points-mini_list-item"><img
                                 src="https://assets-global.website-files.com/5f3cf755cabbb361a10bd046/61f940dbd40b360f876ddbd5_Trust%20Point%20Icon%20-%20Diamond%201.svg"
                                 loading="lazy" alt="Easy payment plans" class="trust-points-mini_icon" />
@@ -405,13 +1137,13 @@
                                     deposits.</div>
                             </div>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
         <div class="spacer-xl"></div>
     </div>
-    <div id="module" data-analytics-module="true" data-track-module_action="Editable discovery slot"
+    <!-- <div id="module" data-analytics-module="true" data-track-module_action="Editable discovery slot"
         data-track-module_position="2" class="section-light wf-section">
         <div class="spacer-xl"></div>
         <div class="container w-condition-invisible">
@@ -484,7 +1216,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="section-spacer"></div>
     <div class="wf-section">
         <div class="fixed-widget">
@@ -493,8 +1225,12 @@
         <div class="section-footer-us">
             <div class="container">
                 <div class="footer-wrapper">
-                    <div id="w-node-c4b3eaee-5154-06ee-8ad6-7cfa69a5801e-69a5801b" class="pollen-logo-wrapper footer"><a
-                            href="/" class="pollen-header-logo w-inline-block"></a></div>
+                    <a href="{% url 'movie-home' %}">
+                        <img alt="Reviewbeta" src="{% static "movieapp/img/reviewbeta-logo.png" %}" style="width: 148px;
+                        height: 40px;
+                        border-bottom-style: none;
+                        background-repeat: no-repeat;" alt="" />
+                    </a>
                     <div id="w-node-c4b3eaee-5154-06ee-8ad6-7cfa69a58020-69a5801b" class="footer-column1-links-wrapper">
                         <a href="/booking-guide" class="footer-link-txt">Booking Guide</a><a href="/what-is-pollen"
                             class="footer-link-txt">What is Pollen?</a><a href="https://support.pollen.co"

@@ -1,0 +1,458 @@
+{% extends 'movieapp/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="main-container">
+    <nav aria-label="breadcrumb" role="navigation" class="bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'movie-home' %}">Home</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="{% url 'movie-all' %}">Movies</a>
+                        </li>
+
+                        <li class="breadcrumb-item active" aria-current="page">{{ object.title }}</li>
+                    </ol>
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </nav>
+<section class="bg-white space-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mb-4 mb-sm-0">
+                <img alt="Image" src="{{ object.image.url }}" class="rounded img-fluid" style="width: 641px; height: 333px; object-fit: cover;" />
+            </div>
+            <!--end of col-->
+            <div class="col-lg-4 d-flex flex-column justify-content-between mr-auto ml-auto">
+                <div>
+                    <h1 class="mb-2">{{ object.title }}</h1>
+                    <h2 class="lead mb-3">{% for cast in object.cast.all %}
+                        {{ cast.name }}{% if not forloop.last %},{% endif %}
+                        {% endfor %}</h2>
+                    <div>
+                        <span class="badge badge-secondary mr-3">
+                            {% for category in object.category.all %} 
+                            {{ category.name }} 
+                            {% if not forloop.last %}|{% endif %} 
+                            {% endfor %}
+                        </span>
+                    </div>
+                    {% for movie in movie_ratings %}
+                    {% if movie == object %}
+                    
+                    <div class="mt-2">
+                        <i class="fa fa-star {% if movie.avg_score > 0 %} checked {% endif %}"></i>
+                        <i class="fa fa-star {% if movie.avg_score > 1 %} checked {% endif %}"></i>
+                        <i class="fa fa-star {% if movie.avg_score > 2 %} checked {% endif %}"></i>
+                        <i class="fa fa-star {% if movie.avg_score > 3 %} checked {% endif %}"></i>
+                        <i class="fa fa-star {% if movie.avg_score > 4 %} checked {% endif %}"></i>
+                        <span>
+                          {% if movie.avg_score > 1 %}
+                            {{ movie.review_count }}
+                              {% if movie.review_count > 1 %} Reviews {% else %}
+                              Review
+                              {% endif %}
+                          {% else %}
+                            No reviews
+                          {% endif %}
+                        </span>
+                      </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div>
+                    <div class="btn-group mb-2">
+                        <button type="button" class="btn btn-success btn-lg">Write a Review</button>
+                        <button type="button"
+                            class="btn btn-success dropdown-toggle dropdown-toggle-split dropdown-toggle-no-arrow"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-dots-three-horizontal"></i>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm">
+                            {% if user.is_superuser %}
+                            <a class="dropdown-item" href="{% url 'movie-update' object.id %}">Update</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'movie-delete' object.id %}">Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="text-small">
+                        <span class="text-muted">&copy; Kemi Adetiba Visuals 2021</span>
+                    </div>
+                </div>
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+<!--end of section-->
+<section class="space-sm">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-12 col-md-8 col-lg-7">
+                <!--end of video cover-->
+                <h5 class="mb-2">Overview</h5>
+                <article class="mb-4">
+                    <p>
+                        {{ object.content }}
+                    </p>
+                    <!-- <ul>
+                        <li>
+                            Temporibus autem quibusdam
+                        </li>
+                    </ul> -->
+                </article>
+                    <div class="rounded mb-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item"
+                                src="https://www.youtube.com/embed/{{ object.trailer }}" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <!--end of video cover-->
+                <hr>
+                <h5 class="mb-4">
+                    {% if comments %}
+                    {{ object.number_of_comments }}
+                    Review{{ object.number_of_comments|pluralize }}
+                    {% else %}
+                    No Reviews
+                    {% endif %}
+                </h5>
+                <div class="card">
+                    <div class="card-header bg-secondary d-flex justify-content-between">
+                        <button class="btn btn-secondary" type="button" data-target="#comment-reply"
+                            data-toggle="collapse" aria-expanded="false" aria-controls="comment-reply">Write a
+                            review</button>
+                        <form class="d-flex align-items-center">
+                            <span class="mr-2 text-muted text-small text-nowrap">Sort by:</span>
+                            <select class="custom-select" disabled>
+                                <option value="alpha">Alphabetical</option>
+                                <option value="old-new" selected>Newest</option>
+                                <option value="new-old">Popular</option>
+                                <option value="recent">Recently Updated</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="collapse" id="comment-reply">
+                        {% if user.is_authenticated %}
+                        <form method="POST" class="card-body" action="" id="{{object.id}}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ comment_form|crispy }}
+                                <br>
+                                <fieldset class="star-rating">
+                                    <legend class="star-rating__title">Your rating:</legend>
+                                    <div class="star-rating__stars">
+                                      <input class="star-rating__input" type="radio" name="rating" value="1" id="rating-1" />
+                                      <label class="star-rating__label" for="rating-1" aria-label="One"></label>
+                                      <input class="star-rating__input" type="radio" name="rating" value="2" id="rating-2" />
+                                      <label class="star-rating__label" for="rating-2" aria-label="Two"></label>
+                                      <input class="star-rating__input" type="radio" name="rating" value="3" id="rating-3" />
+                                      <label class="star-rating__label" for="rating-3" aria-label="Three"></label>
+                                      <input class="star-rating__input" type="radio" name="rating" value="4" id="rating-4" />
+                                      <label class="star-rating__label" for="rating-4" aria-label="Four"></label>
+                                      <input class="star-rating__input" type="radio" name="rating" value="5" id="rating-5" />
+                                      <label class="star-rating__label" for="rating-5" aria-label="Five"></label>
+                                      <div class="star-rating__focus"></div>
+                                    </div>
+                                  </fieldset>
+                                  <div class="d-flex align-items-center">
+                                      <button type="submit" class="btn btn-success mr-3">Submit review</button>
+                                      <a href="#comment-reply" class="text-small text-muted" data-toggle="collapse"
+                                          aria-expanded="true" aria-controls="comment-reply">Cancel</a>
+                                  </div>
+                            </div>
+                        </form>
+                        {% else %}
+                        <div class="card-body">
+                            <a class="btn btn-success mr-3" href="{% url 'login' %}?next={{request.path}}">Log in to add a
+                                review!
+                            </a><br>
+                        </div>
+                        {% endif %}
+                        <!-- <form class="card-body">
+                            <div class="form-group">
+                                <textarea class="form-control from-control-lg" id="comment-reply-text"
+                                    name="comment-reply" rows="4" placeholder="Type your reply here"></textarea>
+                            </div>
+                            <div class="mb-2">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="notify-reply"
+                                        id="check-notify">
+                                    <label class="custom-control-label text-small" for="check-notify">Notify me when
+                                        someone replies</label>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <button type="submit" class="btn btn-success mr-3">Submit reply</button>
+                                <a href="#comment-reply" class="text-small text-muted" data-toggle="collapse"
+                                    aria-expanded="true" aria-controls="comment-reply">Cancel</a>
+                            </div>
+                        </form> -->
+                    </div>
+
+                    {% if comments %}
+                    <ul class="list-group list-group-flush list-group-comments">
+                        {% for comment in comments %}
+                        <li class="list-group-item py-4">
+                            <div class="media">
+                                <img alt="Image" src="{{ comment.author.profile.image.url }}" %}" class="avatar avatar-sm" />
+                                <div class="media-body">
+                                    <div class="mb-2">
+                                        <span class="h6 mb-0">{{ comment.author }}</span>
+                                        <i class="fa fa-star {% if comment.rating > 0 %} checked {% endif %}"></i>
+                                        <i class="fa fa-star {% if comment.rating > 1 %} checked {% endif %}"></i>
+                                        <i class="fa fa-star {% if comment.rating > 2 %} checked {% endif %}"></i>
+                                        <i class="fa fa-star {% if comment.rating > 3 %} checked {% endif %}"></i>
+                                        <i class="fa fa-star {% if comment.rating > 4 %} checked {% endif %}"></i>
+                                        <small class="text-muted">{{ comment.created_date|date:'d/m/Y' }}</small>
+                                    </div>
+                                    <p>
+                                        {{ comment.review|safe }}
+                                    </p>
+                                    <div class="d-flex align-items-center">
+                                        <!-- <div class="mr-2">
+                                            <button class="btn btn-sm btn-outline-primary">Reply</button>
+                                            <button class="btn btn-sm btn-outline-primary"><i
+                                                    class="icon-thumbs-up"></i>&nbsp;(2)</button>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <div class="card-body">
+                        <strong class="text-secondary">No reviews yet...</strong>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+            <!--end of col-->
+            <div class="col-12 col-md-4">
+                <div class="card card-borderless">
+                    <a class="card-body" href="#">
+                        <span class="title-decorative">Sponsored</span>
+                        <div class="d-flex justify-content-between mb-3">
+                            <img alt="Image" src="{{ object.poster.url }}" width="100%" height="auto" />
+                        </div>
+                        <span class="h6">A robust suite of styled elements and pages for Bootstrap 4</span>
+                    </a>
+                </div>
+                <!-- end card -->
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <div><i class="icon-text-document mr-1"></i> Directed By</div>
+                                <span>
+                                    {% for director in object.director.all %}
+                                    {{ director.name }}{% if not forloop.last %},
+                                    {% endif %}
+                                    {% endfor %}
+                                </span>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <div><i class="icon-edit mr-1"></i> Released Date</div>
+                                <span>{{ object.release_date|date:'F d, Y' }}</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <div><i class="icon-thumbs-up mr-1"></i> Published Date</div>
+                                <span>{{ object.published_date|date:'F d, Y' }}</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <div><i class="icon-share mr-1"></i> Reviews</div>
+                                <span>
+                                    {% if comments %}
+                                    {{ object.number_of_comments }}
+                                    Review{{ object.number_of_comments|pluralize }}
+                                    {% else %}
+                                    No Reviews
+                                    {% endif %}
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div>
+                            <span class="h6">Cast</span>
+                        </div>
+                        <a href="#">View all &rsaquo;</a>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled list-spacing-sm">
+                            {% for cast in object.cast.all %}
+                            <li>
+                                <a class="media" href="#">
+                                    <img alt="Image" src="{{ cast.image.url }}" class="avatar avatar-sm" />
+                                    <div class="media-body">
+                                        <span class="h6 mb-0">{{ cast.name }}</span>
+                                        <!-- <span class="text-muted">Character</span> -->
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+
+                            <!-- <li>
+                                <a class="media" href="#">
+                                    <img alt="Image" src="{% static "movieapp/img/avatar-male-3.jpg" %}" class="avatar avatar-sm mr-3" />
+                                    <div class="media-body">
+                                        <span class="h6 mb-0">Daniel Cameron</span>
+                                        <span class="text-muted">Product Designer</span>
+                                    </div>
+                                </a>
+                            </li> -->
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- end card -->
+                <!-- <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div>
+                            <span class="h6">Related Products</span>
+                        </div>
+                        <a href="#">View all &rsaquo;</a>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled list-spacing-sm">
+
+                            <li>
+                                <div class="media">
+                                    <a href="#">
+                                        <img alt="Image" src="{% static "movieapp/img/avatar-male-3.jpg" %}"
+                                            class="avatar avatar-square rounded mr-3" />
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="#">
+                                            <span class="h6">Bench</span>
+                                        </a>
+                                        <span class="badge badge-secondary">Productivity</span>
+                                        <div class="text-muted">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <small><i class="icon-heart"></i> 373</small>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <small><i class="icon-message"></i> 62</small>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="media">
+                                    <a href="#">
+                                        <img alt="Image" src="{% static "movieapp/img/avatar-male-3.jpg" %}"
+                                            class="avatar avatar-square rounded mr-3" />
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="#">
+                                            <span class="h6">Kin</span>
+                                        </a>
+                                        <span class="badge badge-secondary">Lifestyle</span>
+                                        <div class="text-muted">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <small><i class="icon-heart"></i> 84</small>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <small><i class="icon-message"></i> 21</small>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="media">
+                                    <a href="#">
+                                        <img alt="Image" src="{% static "movieapp/img/avatar-male-3.jpg" %}"
+                                            class="avatar avatar-square rounded mr-3" />
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="#">
+                                            <span class="h6">Paydar</span>
+                                        </a>
+                                        <span class="badge badge-secondary">Productivity</span>
+                                        <div class="text-muted">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <small><i class="icon-heart"></i> 253</small>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <small><i class="icon-message"></i> 19</small>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="media">
+                                    <a href="#">
+                                        <img alt="Image" src="{% static "movieapp/img/avatar-male-3.jpg" %}"
+                                            class="avatar avatar-square rounded mr-3" />
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="#">
+                                            <span class="h6">pipeline.js</span>
+                                        </a>
+                                        <span class="badge badge-secondary">Development</span>
+                                        <div class="text-muted">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item">
+                                                    <small><i class="icon-heart"></i> 84</small>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <small><i class="icon-message"></i> 25</small>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div> -->
+                <!-- end card -->
+            </div>
+            <!--end of col-->
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</section>
+<!--end of section-->
+
+</div>
+{% endblock content %}
