@@ -10593,13 +10593,13 @@
      display: -ms-grid;
      display: grid;
      grid-auto-columns: 1fr;
-     grid-auto-rows: minmax(10rem, 1fr);
+     grid-auto-rows: minmax(5rem, 1fr);
      grid-column-gap: 16px;
      grid-row-gap: 16px;
      -ms-grid-columns: 1fr 1fr 1fr;
      grid-template-columns: 1fr 1fr 1fr 1fr;
      -ms-grid-rows: minmax(10rem, 1fr);
-     grid-template-rows: minmax(10rem, 1fr);
+     grid-template-rows: minmax(5rem, 1fr);
    }
    
    .hero__arrow {
